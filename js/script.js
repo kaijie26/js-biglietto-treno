@@ -13,23 +13,29 @@
 const userKilometres = parseInt (prompt ('Quanti chilometri vuoi percorrere?'));
 // Chiedo l'età al passeggero 
 const userAge = parseInt (prompt ('Quanti anni hai?'));
-console.log(userAge);
-// Calcolo il prezzo standard del biglietto in proporzione ai chilometri del passeggero
-// avendo la costante del costo a (0.21 € al km)
+
+// 2.CALCOLO IL PREZZO STANDARD DEL BIGLIETTO IN PROPORZIONE AI CHILOMETRI DEL PASSEGGERO
+// AVENDO LA COSTANTE DEL COSTO A (0.21 € AL KM)
 const kmPrice = 0.21;
-const standardPrice = userKilometres * kmPrice;
+let standardPrice = userKilometres * kmPrice;
 // Elaboro l'età del passeggero per definirne le categorie
+// Underrrated
 const young = 18;
+// Senior
 const old = 65;
 
+// 3. APPLICO LO SCONTO IN BASE ALLA ETÀ DEL PASSEGGERO
 if (userAge < young) {
-    underrated = 'minorenne';
+    // underrated discount price;
+    standardPrice -=  standardPrice * 0.2;
 }  else if (userAge > old) {
-    senior = 'anziano';
+    // senior discount price';
+    standardPrice -=  standardPrice * 0.4;
 }
 
-console.log(underrated);
-console.log(senior);
+// 4. EMETTO IL FIX SUL PREZZO FINALE PER AVERE DUE DECIMALI
+let fixFinalPrice = standardPrice.toFixed(2);
+console.log(fixFinalPrice);
 
-// 2. APPLICO LO SCONTO IN BASE ALLA ETÀ DEL PASSEGGERO
-let discountPrice;
+// 5. STAMPO IL PREZZO FINALE
+document.getElementById("result").innerHTML = 'Il prezzo finale del biglietto è ' +  fixFinalPrice + "&euro;";
